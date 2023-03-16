@@ -1,18 +1,18 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import s from './Contacts.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-// import { deleteContact } from 'redux/contactSlice';
-import selectedFilteredContacts from 'redux/selectors';
+import { selectedFilteredContacts } from 'redux/selectors';
+import { deleteContact } from '../../redux/operations';
 
 const Contacts = () => {
   const dispatch = useDispatch();
   const filteredContacts = useSelector(selectedFilteredContacts);
 
-  // const onDeleteContact = id => {
-  //   dispatch(deleteContact(id));
-  // };
+  const onDeleteContact = id => {
+    dispatch(deleteContact(id));
+  };
 
   return (
     <ul className={s.ContactList}>
@@ -23,7 +23,7 @@ const Contacts = () => {
           </p>
           <button
             className={s.ContactList__deleteBtn}
-            // onClick={() => onDeleteContact(contact.id)}
+            onClick={() => onDeleteContact(contact.id)}
           >
             Delete
           </button>

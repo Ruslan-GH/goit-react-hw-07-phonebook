@@ -2,11 +2,10 @@ import { useState } from 'react';
 import s from './PhonebookForm.module.css';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { fetchContacts } from '../../redux/operations';
 import { useEffect } from 'react';
 
-// import { addContact } from 'redux/contactSlice';
+import { fetchContacts } from '../../redux/operations';
+import { addContact } from '../../redux/operations';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
@@ -17,7 +16,7 @@ const PhonebookForm = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts.contacts.items);
 
   const handleNameChange = e => {
     setName(e.target.value);
@@ -45,9 +44,9 @@ const PhonebookForm = () => {
       return;
     }
 
-    // dispatch(addContact(newContact));
-    // setName('');
-    // setNumber('');
+    dispatch(addContact(newContact));
+    setName('');
+    setNumber('');
   };
 
   return (

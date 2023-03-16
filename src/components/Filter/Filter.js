@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -6,10 +6,12 @@ import { setFilter } from 'redux/contactSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const query = useSelector(state => state.contacts.filter);
 
-  const onFilterChange = query => {
-    dispatch(setFilter(query));
+  const [query, setQuery] = useState('');
+
+  const onFilterChange = e => {
+    setQuery(e.currentTarget.value);
+    dispatch(setFilter(e.currentTarget.value.toLowerCase()));
   };
 
   return (
@@ -19,7 +21,7 @@ const Filter = () => {
         className={s.FilterInput}
         type="text"
         value={query}
-        onChange={e => onFilterChange(e.target.value)}
+        onChange={onFilterChange}
       ></input>
     </p>
   );
