@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import s from './Filter.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { setFilter } from 'redux/contactSlice';
 

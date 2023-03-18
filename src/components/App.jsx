@@ -21,10 +21,10 @@ const App = () => {
       <h1>Contacts</h1>
       <Filter />
       {isLoading && (
-        <p>
+        <div>
           Loading contacts...
           <Loader />
-        </p>
+        </div>
       )}
       {error && { error }}
       <Contacts />

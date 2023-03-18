@@ -1,10 +1,10 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
-import s from './Contacts.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 
-import { selectedFilteredContacts } from 'redux/selectors';
+import s from './Contacts.module.css';
 import { deleteContact } from '../../redux/operations';
+import { selectedFilteredContacts } from 'redux/selectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
